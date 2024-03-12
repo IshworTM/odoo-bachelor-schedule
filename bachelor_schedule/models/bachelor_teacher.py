@@ -17,8 +17,9 @@ class BachelorTeacher(models.Model):
         string="Email Address"
     )
 
+
     subject_ids = fields.One2many(
         'bachelor.subject',
         'teacher_id',
-        string="Subjects"
+        string="Subjects",
     )
