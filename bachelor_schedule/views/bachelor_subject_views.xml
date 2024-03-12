@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="bachelor_subject_view_tree" model="ir.ui.view">
+            <field name="name">bachelor.subject.view.tree</field>
+            <field name="model">bachelor.subject</field>
+            <field name="arch" type="xml">
+                <tree string="Subject Tree View">
+                    <field name="subject_name"/>
+                    <field name="display_name"/>
+                    <field name="credit_hours"/>
+                    <field name="subject_code" widget="CopyClipboardChar"/>
+                    <field name="course_id"/>
+                    <field name="teacher_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bachelor_subject_view_form" model="ir.ui.view">
+            <field name="name">bachelor.subject.view.form</field>
+            <field name="model">bachelor.subject</field>
+            <field name="arch" type="xml">
+                <form string="Subject Form View">
+                    <sheet>
+                        <group>
+                            <field name="course_id"/>
+                            <field name="subject_name"/>
+                            <field name="display_name"/>
+                            <field name="credit_hours"/>
+                            <field name="subject_code" widget="CopyClipboardChar"/>
+                            <field name="teacher_id"/>
+                        </group>
+                        <field name="subject_schedule_ids">
+                            <tree>
+                                <field name="display_name"/>
+                                <field name="subject_id"/>
+                                <field name="from_date"/>
+                                <field name="to_date"/>
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <field name="display_name"/>
+                                        <field name="subject_id"/>
+                                        <field name="from_date"/>
+                                        <field name="to_date"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <record id="bachelor_subject_action" model="ir.actions.act_window">
+            <field name="name">Subject Details</field>
+            <field name="res_model">bachelor.subject</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="bachelor_subject_menu"
+            name="Subjects"
+            action="bachelor_subject_action"
+            parent="bachelor_schedule_root_menu"
+        />
+    
+    </data>
+    
+
+</odoo>

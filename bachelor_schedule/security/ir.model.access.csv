@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bachelor_teacher,bachelor.teacher,model_bachelor_teacher,base.group_user,1,1,1,1
+access_bachelor_subject,bachelor.subject,model_bachelor_subject,base.group_user,1,1,1,1
+access_bachelor_course,bachelor.course,model_bachelor_course,base.group_user,1,1,1,1
+access_bachelor_schedule,bachelor.schedule,model_bachelor_schedule,base.group_user,1,1,1,1
+access_bachelor_subject_schedule,bachelor.subject.schedule,model_bachelor_subject_schedule,base.group_user,1,1,1,1

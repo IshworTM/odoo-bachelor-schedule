@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <record id="bachelor_course_view_tree" model="ir.ui.view">
+            <field name="name">bachelor.course.view.tree</field>
+            <field name="model">bachelor.course</field>
+            <field name="arch" type="xml">
+                <tree string="Course tree view" editable="bottom">
+                    <field name="name" placeholder="Course Title" />
+                    <field name="alias" />
+                    <field name="subject_ids" widget="many2many_tags" />
+                    <field name="course_duration" placeholder="Select the duration" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="bachelor_course_view_form" model="ir.ui.view">
+            <field name="name">bachelor.course.view.form</field>
+            <field name="model">bachelor.course</field>
+            <field name="arch" type="xml">
+                <form string="Course Form View">
+                    <sheet>
+                        <group>
+                            <field name="name" placeholder="Course Title" />
+                            <field name="alias" />
+                            <field name="course_duration" placeholder="Select the duration" />
+                        </group>
+                            <notebook>
+                                <page name="Subject List" string="Associated Subjects">
+                                    <field name="subject_ids" string=""/>                            
+                                </page>
+                            </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="bachelor_course_view_kanban" model="ir.ui.view">
+            <field name="name">bachelor.course.view.kanban</field>
+            <field name="model">bachelor.course</field>
+            <field name="arch" type="xml">
+                <kanban
+                    class="oe_background_grey o_kanban_dashboard o_project_kanban o_emphasize_colors"
+                    action="bachelor_schedule.bachelor_schedule_calendar_action" type="action"
+                    sample="1" default_group_by="course_duration"
+                >
+                    <field name="name" />
+                    <field name="alias" />
+                    <field name="course_duration" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div
+                                t-attf-class="oe_kanban_global_click o_has_icon oe_kanban_content oe_kanban_card">
+                                <div class="o_project_kanban_main">
+                                    <div class="o_kanban_card_content mw-100">
+                                        <div class="o_kanban_primary_left">
+                                            <div class="text-muted o_row">
+                                                Name: <field name="name" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            Alias: <field name="alias" />
+                                        </div>
+                                        <div>
+                                            <field name="subject_ids" widget="many2many_tags"/>
+                                        </div>
+                                    </div>
+                                    <div class="o_kanban_card_manage_pane dropdown-menu" role="menu">
+                                        <div class="o_kanban_slides_card_manage_pane p-4">
+                                            <t t-if="widget.deletable">
+                                                <div role="menuitem">
+                                                    <a type="delete">Delete</a>
+                                                </div>
+                                            </t>
+                                            <div role="menuitem">
+                                                <a role="menuitem" type="open">View</a>
+                                            </div>
+                                            <div role="separator" class="dropdown-divider" />
+                                        </div>
+                                        <div role="menuitem" aria-haspopup="true"
+                                            class="o_no_padding_kanban_colorpicker">
+                                            <ul class="oe_kanban_colorpicker" data-field="color"
+                                                role="popup" />
+                                        </div>
+                                    </div>
+                                    <a class="o_kanban_manage_toggle_button o_dropdown_kanban"
+                                        href="#" groups="base.group_user">
+                                        <i class="fa fa-ellipsis-v" role="img" aria-label="Manage"
+                                            title="Manage" />
+                                    </a>
+                                </div>
+                                <!-- <div class="o_kanban_record_bottom mt-3">
+                                    <div class="oe_kanban_bottom_left">
+                                        <div
+                                            class="o_project_kanban_boxes d-flex align-items-baseline">
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="bachelor_course_action" model="ir.actions.act_window">
+            <field name="name">Available Courses</field>
+            <field name="res_model">bachelor.course</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <menuitem
+            id="bachelor_schedule_root_menu"
+            name="Bachelor Schedule"
+            sequence="0"
+        />
+
+        <menuitem
+            id="bachelor_course_menu"
+            name="Courses"
+            action="bachelor_course_action"
+            parent="bachelor_schedule_root_menu"
+            sequence="0"
+        />
+
+    </data>
+
+
+</odoo>

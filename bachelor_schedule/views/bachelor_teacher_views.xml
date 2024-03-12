@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="bachelor_teacher_view_tree" model="ir.ui.view">
+            <field name="name">bachelor.teacher.view.tree</field>
+            <field name="model">bachelor.teacher</field>
+            <field name="arch" type="xml">
+                <tree string="Teacher tree view" editable="bottom">
+                    <field name="name"/>
+                    <field name="subject_ids" widget="many2many_tags" />
+                    <field name="contact_number" widget="phone"/>
+                    <field name="email_address" widget="email"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="bachelor_teacher_view_form" model="ir.ui.view">
+            <field name="name">bachelor.teacher.view.form</field>
+            <field name="model">bachelor.teacher</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="contact_number" widget="phone"/>
+                            <field name="email_address" widget="email"/>                            
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <record id="bachelor_teacher_action" model="ir.actions.act_window">
+            <field name="name">Teacher's Details</field>
+            <field name="res_model">bachelor.teacher</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            id="bachelors_teacher_menu"
+            name="Teachers"
+            action="bachelor_teacher_action"
+            parent="bachelor_schedule_root_menu"
+        />
+    </data>
+    
+
+</odoo>
