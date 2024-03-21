@@ -12,6 +12,8 @@ class BachelorSubject(models.Model):
 
     credit_hours = fields.Integer(string="Credit Hours*", required=True)
 
+    color = fields.Integer("Color")
+
     subject_code = fields.Char(string="Subject Code")
 
     course_id = fields.Many2one("bachelor.course", required=True, string="Course Name*")

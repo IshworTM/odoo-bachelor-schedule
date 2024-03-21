@@ -1,4 +1,4 @@
 !.gitignore
 
-bachelor_schedule/__pycache__
-bachelor_schedule/models/__pycache__
+bachelor_schedule/__pycache__/*
+bachelor_schedule/models/__pycache__/*

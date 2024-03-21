@@ -7,9 +7,9 @@
             <field name="name">bachelor.teacher.view.tree</field>
             <field name="model">bachelor.teacher</field>
             <field name="arch" type="xml">
-                <tree string="Teacher tree view" editable="bottom">
+                <tree string="Teacher tree view">
                     <field name="name"/>
-                    <field name="subject_ids" widget="many2many_tags" />
+                    <field name="subject_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                     <field name="contact_number" widget="phone"/>
                     <field name="email_address" widget="email"/>
                 </tree>
@@ -22,10 +22,13 @@
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
-                        <group>
-                            <field name="name"/>
+                        <group string="Academic Details">
+                                <field name="name"/>
+                                <field name="subject_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                        </group>
+                        <group name="contact-details" string="Contact Details">
                             <field name="contact_number" widget="phone"/>
-                            <field name="email_address" widget="email"/>                            
+                            <field name="email_address" widget="email"/>
                         </group>
                     </sheet>
                 </form>

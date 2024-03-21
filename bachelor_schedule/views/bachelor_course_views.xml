@@ -42,7 +42,7 @@
             <field name="arch" type="xml">
                 <kanban
                     class="oe_background_grey o_kanban_dashboard o_project_kanban o_emphasize_colors"
-                    action="bachelor_schedule.bachelor_schedule_calendar_action" type="action"
+                    action="bachelor_schedule.bachelor_schedule_action" type="action"
                     sample="1" default_group_by="course_duration"
                 >
                     <field name="name" />

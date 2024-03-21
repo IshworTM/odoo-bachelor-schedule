@@ -11,7 +11,7 @@
                     <field name="period_start" />
                     <field name="period_duration" />
                     <field name="period_stop" />
-                    <field name="subject_schedule_ids" />
+                    <field name="subject_schedule_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 </tree>
             </field>
         </record>
@@ -33,33 +33,29 @@
             </field>
         </record>
 
-
         <record id="bachelor_schedule_view_calendar" model="ir.ui.view">
             <field name="name">bachelor.schedule.view.calendar</field>
             <field name="model">bachelor.schedule</field>
             <field name="arch" type="xml">
-                <calendar string="Subject Calendar view" date_start="period_start"
-                    date_stop="period_end_time" event_open_popup="true" mode="week" color="color">
+                <calendar string="Subject Calendar view"
+                date_start="period_start"
+                date_stop="period_stop"
+                event_open_popup="true"
+                mode="week"
+                color="color">
                     <field name="subject_id" />
                     <field name="period_start" />
-                    <field name="period_duration" />
                     <field name="period_stop" />
-                    <field name="period_end_time" />
+                    <field name="period_duration" />
+                    <field name="subject_schedule_ids" />
                 </calendar>
             </field>
-        </record>
-
-        <record id="bachelor_schedule_calendar_action" model="ir.actions.act_window">
-            <field name="name">Period Schedule</field>
-            <field name="res_model">bachelor.schedule</field>
-            <field name="view_mode">calendar</field>
-            <field name="view_id" ref="bachelor_schedule_view_calendar" />
         </record>
 
         <record id="bachelor_schedule_action" model="ir.actions.act_window">
             <field name="name">Schedule Timestamp</field>
             <field name="res_model">bachelor.schedule</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">calendar,tree,form</field>
         </record>
 
         <menuitem

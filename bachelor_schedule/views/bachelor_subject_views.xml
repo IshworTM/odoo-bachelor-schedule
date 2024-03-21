@@ -35,16 +35,18 @@
                             <tree>
                                 <field name="display_name"/>
                                 <field name="subject_id"/>
-                                <field name="from_date"/>
-                                <field name="to_date"/>
+                                <field name="schedule_from_date"/>
+                                <field name="period_duration"/>
+                                <field name="schedule_to_date"/>
                             </tree>
                             <form>
                                 <sheet>
                                     <group>
                                         <field name="display_name"/>
                                         <field name="subject_id"/>
-                                        <field name="from_date"/>
-                                        <field name="to_date"/>
+                                        <field name="schedule_from_date"/>
+                                        <field name="period_duration"/>
+                                        <field name="schedule_to_date"/>
                                     </group>
                                 </sheet>
                             </form>
